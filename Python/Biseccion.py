@@ -19,8 +19,8 @@ def biseccion(a, b, tol, f):
 
 """
 Funcion auxiliar que implementa el metodo de la biseccion para encontrar el cero de una funcion matematica
-:param a: limite izquierdo del intervalo
-:param b: limite derecho de la funcion
+:param a: limite izquierdo del intervalo en el eje x
+:param b: limite derecho de la funcion en el eje x
 :param tol: tolerancia al fallo que debe tener el resultado final
 :param f: funcion que se desea biseccionar
 :param Xaprox: xk calculado en iteraciones anteriores de la funcion
@@ -40,7 +40,7 @@ def biseccionAux(a, b, tol, f, Xaprox, itr):
         #Se calcula xk, variable que se utiliza para dividir el intervalo en dos
         xk = (a + b) / 2;
 
-        #Se verifica si el intervalo de [a, xk] cumple con el teorema de lozano;
+        #Se verifica si el intervalo de [a, xk] cumple con el Teorema de Bolzano;
         multiIntervalo1 = f(a) * f(xk);
         if(multiIntervalo1 <= 0):
             #Si se cumple la condicion se hace un llamado recursivo utilizando xk como
