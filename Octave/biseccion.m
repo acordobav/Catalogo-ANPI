@@ -60,5 +60,7 @@ function [Xaprox, iter] = biseccionAux(a, b, tol, f, xa, itr)
     end %End condicion de parada
 end %End biseccionAux
 
+%{
 str = '@(x)exp(x) - x - 2';
 [a, b] = biseccion(0, 2, 0.24034295746184142, str)
+%}
