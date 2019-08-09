@@ -10,13 +10,16 @@ Funcion que implementa el metodo de Newton-Raphson para encontrar el cero de una
           el resultado final.
 '''
 def newton_raphson(f, x0, tol):
-    #Se hace un llamado a la funcion auxiliar, insertando los  valores iniciales de los argumentos
-    return newton_raphsonAux(f, x0, tol, 0)
+    #Se obtiene la funcion a partir del string ingresado por el usuario
+    funcion = sympify(f)
+
+    # Se hace un llamado a la funcion auxiliar
+    return newton_raphsonAux(funcion, x0, tol, 0)
 
 
 '''
 Funcion auxiliar que implementa el metodo de Newton-Raphson para encontrar el cero de una funcion
-:param f: string con la funcion que se debe evaluar
+:param funcion: funcion que se debe evaluar
 :param x0: valor de x inicial con el cual aplicar el metodo
 :param tol: tolerancia al fallo de debe tener el resultado final
 :param itr: contador con el numero de iteraciones que ha realizado el algoritmo
@@ -24,12 +27,9 @@ Funcion auxiliar que implementa el metodo de Newton-Raphson para encontrar el ce
           y el segundo elemento es el numero de iteraciones que realizo el algoritmo para encontrar
           el resultado final.
 '''
-def newton_raphsonAux(strFuncion, xk, tol, itr):
-    #Se obtiene la funcion a partir del string ingresado por el usuario
-    f = sympify(strFuncion)
-
+def newton_raphsonAux(funcion, xk, tol, itr):
     #Se evalua la funcion en el valor de xk
-    fxk = f.subs({'x':xk})
+    fxk = funcion.subs({'x':xk})
 
     #Se verifica si se cumple la condicion de parada
     if (abs(fxk) <= 0):
@@ -37,12 +37,12 @@ def newton_raphsonAux(strFuncion, xk, tol, itr):
 
     else:
         #Se deriva la funcion ingresada por el usuario
-        df = Derivative(strFuncion, 'x');
+        df = Derivative(funcion, 'x');
 
         #Se calcula el xk de la siguiente iteracion
         xkSiguiente = xk - fxk/(df.doit().subs({'x':xk}))
 
-        return newton_raphsonAux(strFuncion, xkSiguiente, tol, itr + 1)
+        return newton_raphsonAux(funcion, xkSiguiente, tol, itr + 1)
 
 
 # function1 = 'cos(2*x)^2 - x^2'
