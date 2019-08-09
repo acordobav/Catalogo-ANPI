@@ -29,7 +29,7 @@ Funcion auxiliar que implementa el metodo de Newton-Raphson para encontrar el ce
 '''
 def newton_raphsonAux(funcion, xk, tol, itr):
     #Se evalua la funcion en el valor de xk
-    fxk = funcion.subs({'x':xk})
+    fxk = float(funcion.subs({'x':xk}))
 
     #Se verifica si se cumple la condicion de parada
     if (abs(fxk) <= tol):
@@ -40,7 +40,7 @@ def newton_raphsonAux(funcion, xk, tol, itr):
         df = Derivative(funcion, 'x');
 
         #Se calcula el xk de la siguiente iteracion
-        xkSiguiente = xk - fxk/(df.doit().subs({'x':xk}))
+        xkSiguiente = float(xk - fxk/(df.doit().subs({'x':xk})))
 
         return newton_raphsonAux(funcion, xkSiguiente, tol, itr + 1)
 
