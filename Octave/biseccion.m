@@ -1,3 +1,5 @@
+pkg load symbolic
+
 %{
 Funcion principal que hace un llamado a la funcion auxiliar que implementa el metodo de la biseccion
 para encontrar el cero de una funcion matematica.
@@ -25,7 +27,7 @@ Funcion auxiliar que implementa el metodo de la biseccion para encontrar el cero
 %}
 function [Xaprox, iter] = biseccionAux(a, b, tol, f, xa, itr)
     %Se obtiene la funcion a partir del string ingresado
-    funcion = str2func(f)
+    funcion = matlabFunction(sym(f));
 
     %Se verifica la condicion de parada del algoritmo
     if abs(funcion(xa)) <= tol
@@ -61,6 +63,6 @@ function [Xaprox, iter] = biseccionAux(a, b, tol, f, xa, itr)
 end %End biseccionAux
 
 %{
-str = '@(x)exp(x) - x - 2';
+str = 'exp(x) - x - 2';
 [a, b] = biseccion(0, 2, 0.24034295746184142, str)
 %}
