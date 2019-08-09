@@ -32,7 +32,7 @@ def newton_raphsonAux(funcion, xk, tol, itr):
     fxk = funcion.subs({'x':xk})
 
     #Se verifica si se cumple la condicion de parada
-    if (abs(fxk) <= 0):
+    if (abs(fxk) <= tol):
         return [xk, itr]
 
     else:
