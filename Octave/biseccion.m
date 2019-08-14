@@ -1,66 +1,65 @@
 pkg load symbolic
 
 %{
-Funcion principal que hace un llamado a la funcion auxiliar que implementa el metodo de la biseccion
-para encontrar el cero de una funcion matematica.
-:param a: limite izquierdo del intervalo en el eje x
-:param b: limite derecho del intervalo en el eje x
+Metodo de la biseccion para encontrar el cero de una funcion matematica
+:param a: limite izquierdo del intervalo
+:param b: limite derecho de la funcion
 :param tol: tolerancia al fallo que debe tener el resultado final
-:param f: funcion que se debe evaluar
-:returns: Xaprox que corresponda al valor aproximado en x donde se encuentra un cero, iter que corresponde
-          al numero de iteraciones que necesito el algoritmo para encontrar el resultado
+:param f: funcion que se desea biseccionar
+:returns: lista con dos elementos, x_aprox obtenido y numero de iteraciones
 %}
 function [Xaprox, iter] = biseccion(a, b, tol, f)
-    xa = (a + b) / 2;
-    [Xaprox, iter] = biseccionAux(a, b, tol, f, xa, 0);
+    xk = (a + b) / 2;  % Calculo del x_aprox inicial
+    [Xaprox, iter] = biseccion_aux(a, b, tol, f, xk, 0);
 end
 
 %{
-Funcion auxiliar que implementa el metodo de la biseccion para encontrar el cero de una funcion matematica.
+Metodo auxiliar del metodo de la biseccion
 :param a: limite izquierdo del intervalo en el eje x
-:param b: limite derecho del intervalo en el eje x
+:param b: limite derecho de la funcion en el eje x
 :param tol: tolerancia al fallo que debe tener el resultado final
-:param f: funcion que se debe evaluar
-:param xa: xk calculado en la iteracion anterior
-:returns: Xaprox que corresponda al valor aproximado en x donde se encuentra un cero, iter que corresponde
-          al numero de iteraciones que necesito el algoritmo para encontrar el resultado
+:param funcion: funcion que se desea biseccionar
+:param x_anterior: xk calculado en iteraciones anteriores de la funcion
+:param itr: numero total de iteraciones
+:returns: lista con dos elementos, x_aprox obtenido y numero de iteraciones
 %}
-function [Xaprox, iter] = biseccionAux(a, b, tol, f, xa, itr)
-    %Se obtiene la funcion a partir del string ingresado
+function [x_aprox, iter] = biseccion_aux(a, b, tol, f, x_anterior, itr)
+    % Se obtiene la funcion a partir del string
     funcion = matlabFunction(sym(f));
 
-    %Se verifica la condicion de parada del algoritmo
-    if abs(funcion(xa)) <= tol
-        Xaprox = xa;
+    % Se verifica la condicion de parada del algoritmo
+    if abs(funcion(x_anterior)) <= tol
+        x_aprox = x_anterior;
         iter = itr;
 
     else
-        %Se verifica si se cumple el Teorema de Bolzano
+        % Se verifica si se cumple el Teorema de Bolzano
         multi = funcion(a) * funcion(b);
         if multi <= 0
-            %Se calcula xk, variable que se utiliza para dividir el intervalo en dos
+            % Se calcula xk, para dividir el intervalo en dos
             xk = (a + b) / 2;
 
-            %Se verifica si el intervalo [a, xk] cumple con el Teorema de Bolzano
+            % Se verifica la condicion en el intervalo de [a, xk]
             multiIntervalo1 = funcion(a) * funcion(xk);
             if multiIntervalo1 <= 0
-                [Xaprox, iter] = biseccionAux(a, xk, tol, f, xk, itr+1);
+                [x_aprox, iter] = biseccion_aux(a, xk, tol, f, xk, itr+1);
             end
 
-            %Se verifica si el intervalo [xk, b] cumple con el Teorema de Bolzano
+            % Intervalo1 no cumple, se verifica si el intervalo2 lo cumple
             multiIntervalo2 = funcion(xk) * funcion(b);
             if multiIntervalo2 <= 0
-                [Xaprox, iter] = biseccionAux(xk, b, tol, f, xk, itr+1);
+                [x_aprox, iter] = biseccion_aux(xk, b, tol, f, xk, itr+1);
             end
 
         else
-            %Si la funcion no cumple con el Teorema de Bolzano se le indica al usuario
-            Xaprox = 'La funcion no cumple con el Teorema de Bolzano.';
+            % Funcion no cumple el Teorema de Bolzano en el intervalo ingresado
+            x_aprox = 'La funcion no cumple con el Teorema de Bolzano.';
             iter = 0;
-        end %End multi <= 0
+        end % End multi <= 0
 
-    end %End condicion de parada
-end %End biseccionAux
+    end % if abs(funcion(x_anterior)) <= tol
+end % End biseccion_aux
+
 
 %{
 str = 'exp(x) - x - 2';
