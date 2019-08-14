@@ -6,6 +6,7 @@ Funcion que implementa el metodo de la secante
 :param xk_anterior2: valor de xk de la iteracion inicial
 :param xk_anterior1: valor de xk de la segunda iteracion
 :param tol: tolerancia al fallo que debe cumplir el resultado
+:returns: lista con dos elementos, xk calculado y numero iteraciones
 """
 
 
