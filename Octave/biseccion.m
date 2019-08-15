@@ -52,5 +52,7 @@ function [x_aprox, iter] = biseccion(a, b, tol, f)
 
 end % End biseccion_aux
 
+%{
 f = 'exp(x) - x - 2';
 [x_aprox, iter] = biseccion(0, 2, 10^-5 , f)
+%}
