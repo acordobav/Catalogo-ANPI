@@ -38,4 +38,4 @@ function [x_aprox, iter] = secante(f, xk_ante2, xk_ante1, tol)
 
 end % secante(f, xk_ante2, xk_ante1, tol)
 
-[xAprox, iter] = secante('exp(2*x) - 10 - log(x/2)', 1, 1.2, 10^-2)
+%[xAprox, iter] = secante('exp(2*x) - 10 - log(x/2)', 1, 1.2, 10^-2)
