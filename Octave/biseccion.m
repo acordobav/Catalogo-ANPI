@@ -50,7 +50,7 @@ function [x_aprox, iter] = biseccion(a, b, tol, f)
     x_aprox = xk;
     iter = itr;
 
-end % End biseccion_aux
+end % End biseccion(a, b, tol, f)
 
 %{
 f = 'exp(x) - x - 2';
