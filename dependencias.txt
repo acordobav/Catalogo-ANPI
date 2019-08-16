@@ -1,0 +1,9 @@
+Este archivo contiene todas las dependencias que se necesitan para poder hacer uso de este catálogo.
+
+-=-=-=-=- Python -=-=-=-=-
+    - Sympy
+    - Matplotlib
+
+
+-=-=-=-=- Octave -=-=-=-=-
+    - Symbolic
