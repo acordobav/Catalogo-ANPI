@@ -1,5 +1,4 @@
 from sympy import sympify
-import math
 
 """
 Funcion que se encarga de calcular el xk+1 utilizando el metodo de la secante
@@ -20,7 +19,7 @@ def xk_secante(funcion, xk, ck):
 
 """
 Metodo de  falsa posicion para encontrar el cero de una funcion
-:param f: funcion que se debe evaluar
+:param str_funcion: string con la funcion que se debe evaluar
 :param a: limite izquierdo del intervalo
 :param b: limite derecho del intervalo
 :param tol: tolerancia al fallo del resultado, numero entre cero y uno
@@ -28,8 +27,8 @@ Metodo de  falsa posicion para encontrar el cero de una funcion
 """
 
 
-def falsa_posicion(f, a, b, tol):
-    funcion = sympify(f)  # Se obtiene la funcion ingresada por el usuario
+def falsa_posicion(str_funcion, a, b, tol):
+    funcion = sympify(str_funcion)  # Se obtiene la funcion ingresada por el usuario
     itr = 0  # Se inicializa el contador del numero de iteraciones
     xk = xk_secante(funcion, b, a)  # Se calcula el valor inicial de xk
 
@@ -64,5 +63,12 @@ def falsa_posicion(f, a, b, tol):
     return [xk, itr]
 
 
-# funcion = 'cos(x)-x'
-# print(falsa_posicion(funcion, 1 / 2, math.pi / 4, 10 ** (-5)));
+# funcion1 = 'cos(x)-x'
+# print(funcion1)
+# print(falsa_posicion(funcion1, 1 / 2, 3.14159 / 4, 10 ** -5))
+# print()
+#
+# funcion2 = 'exp(x) - x - 2'
+# print(funcion2)
+# print(falsa_posicion(funcion2, 0, 2, 10**-5))
+# print()

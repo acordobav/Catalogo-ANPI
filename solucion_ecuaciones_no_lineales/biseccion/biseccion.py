@@ -5,13 +5,13 @@ Metodo de la biseccion para encontrar el cero de una funcion matematica
 :param a: limite izquierdo del intervalo
 :param b: limite derecho de la funcion
 :param tol: tolerancia al fallo que debe tener el resultado final
-:param f: funcion que se desea biseccionar
+:param str_funcion: string con la funcion que se desea evaluar
 :returns: lista con dos elementos, x_aprox obtenido y numero de iteraciones
 """
 
 
-def biseccion(a, b, tol, f):
-    funcion = sympify(f)  # Se obtiene la funcion a partir del string
+def biseccion(a, b, tol, str_funcion):
+    funcion = sympify(str_funcion)  # Se obtiene la funcion a partir del string
 
     # Se verifica si el intervalo cumple el TB
     multi0 = float(funcion.subs({'x': a}) * funcion.subs({'x': b}))
@@ -47,5 +47,14 @@ def biseccion(a, b, tol, f):
 
     return [x_aprox, itr]
 
-# f = 'exp(x) - x - 2'
-# biseccion(0, 2, 10**-5, f)
+
+# funcion1 = 'cos(x)-x'
+# print(funcion1)
+# print(biseccion(1 / 2, 3.14159 / 4, 10 ** -5, funcion1))
+# print()
+#
+#
+# funcion2 = 'exp(x) - x - 2'
+# print(funcion2)
+# print(biseccion(0, 2, 10**-5, funcion2))
+# print()

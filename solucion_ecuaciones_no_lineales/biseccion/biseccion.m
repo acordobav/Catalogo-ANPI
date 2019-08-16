@@ -5,12 +5,12 @@ Metodo de la biseccion para encontrar el cero de una funcion matematica
 :param a: limite izquierdo del intervalo
 :param b: limite derecho de la funcion
 :param tol: tolerancia al fallo que debe tener el resultado final
-:param f: funcion que se desea biseccionar
+:param str_funcion: string con la funcion que se desea evaluar
 :returns: lista con dos elementos, x_aprox obtenido y numero de iteraciones
 %}
-function [x_aprox, iter] = biseccion(a, b, tol, f)
+function [x_aprox, iter] = biseccion(a, b, tol, str_funcion)
     % Se obtiene la funcion a partir del string
-    funcion = matlabFunction(sym(f));
+    funcion = matlabFunction(sym(str_funcion));
 
     if ~(funcion(a) * funcion(b) <= 0)
         x_aprox = 'La funcion no cumple con el Teorema de Bolzano.';
@@ -52,7 +52,17 @@ function [x_aprox, iter] = biseccion(a, b, tol, f)
 
 end % End biseccion(a, b, tol, f)
 
+
 %{
-f = 'exp(x) - x - 2';
-[x_aprox, iter] = biseccion(0, 2, 10^-5 , f)
+funcion1 = 'cos(x)-x';
+disp(funcion1)
+[x_aprox1, iter1] = biseccion(1 / 2, 3.14159 / 4, 10^-5, funcion1)
+disp(x_aprox1);
+disp(iter1);
+
+funcion2 = 'exp(x) - x - 2';
+disp(funcion2)
+[x_aprox2, iter2] = biseccion(0, 2, 10^-5 , funcion2)
+disp(x_aprox2);
+disp(iter2);
 %}

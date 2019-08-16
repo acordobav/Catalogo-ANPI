@@ -2,13 +2,13 @@ pkg load symbolic
 
 %{
 Metodo de Newton-Raphson para encontrar el cero de una funcion
-:param f: string con la funcion que se debe evaluar
+:param str_funcion: string con la funcion que se debe evaluar
 :param xk: valor de x inicial con el cual aplicar el metodo
 :param tol: tolerancia al fallo de debe tener el resultado final
 :returns: lista con dos elementos, xk calculado y numero iteraciones
 %}
-function [xAprox, iter] = newton_raphson(f, xk, tol)
-    f = matlabFunction(sym(f));  % Se obtiene la funcion
+function [x_aprox, iter] = newton_raphson(str_funcion, xk, tol)
+    f = matlabFunction(sym(str_funcion));  % Se obtiene la funcion
 
     % Se calcula la derivada de la funcion ingresada
     df = matlabFunction(diff(sym(f)));
@@ -41,7 +41,7 @@ function [xAprox, iter] = newton_raphson(f, xk, tol)
     %Se grafica el error
     graficarError(lista_iter, lista_xk)
 
-    xAprox = xk;
+    x_aprox = xk;
     iter = itr;
 
 end % End newton_raphsonAux
@@ -58,9 +58,21 @@ function graficarError(lista_iter, lista_xk)
     ylabel("| f(xk) | ")          %Se nombra el eje y
 end % End graficar_error
 
+
 %{
-function1 = 'cos(2*x)^2 - x^2'
-function2 = 'exp(x) - x^3 - x'
-[xAprox, iter] = newton_raphson(function1, 3/4, 0.0001)
-pause(10)
+funcion1 = 'cos(2*x)^2 - x^2';
+disp(funcion1);
+[x_aprox1, iter1] = newton_raphson(funcion1, 3/4, 10^-5);
+pause(2);
+disp(x_aprox1);
+disp(iter1);
+%}
+
+%{
+funcion2 = 'exp(x) - x^3 - x';
+disp(funcion2);
+[x_aprox2, iter2] = newton_raphson(funcion2, 3/4, 10^-5);
+pause(2);
+disp(x_aprox2);
+disp(iter2);
 %}

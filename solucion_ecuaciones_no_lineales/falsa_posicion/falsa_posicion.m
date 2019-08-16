@@ -15,14 +15,14 @@ end % xk_secante(funcion, xk, ck)
 
 %{
 Metodo de  falsa posicion para encontrar el cero de una funcion
-:param f: funcion que se debe evaluar
+:param str_funcion: funcion que se debe evaluar
 :param a: limite izquierdo del intervalo
 :param b: limite derecho del intervalo
 :param tol: tolerancia al fallo del resultado, numero entre cero y uno
 :returns: lista con dos elementos, x_aprox obtenido y numero de iteraciones
 %}
-function [x_aprox, iter] = falsa_posicion(f, a, b, tol)
-    funcion = matlabFunction(sym(f)); % Se obtiene la funcion ingresada por el usuario
+function [x_aprox, iter] = falsa_posicion(str_funcion, a, b, tol)
+    funcion = matlabFunction(sym(str_funcion)); % Se obtiene la funcion ingresada por el usuario
     itr = 0; % Se inicializa el contador de iteraciones
     xk = xk_secante(funcion, b, a); % Se calcula el xk inicial
 
@@ -58,5 +58,17 @@ function [x_aprox, iter] = falsa_posicion(f, a, b, tol)
 
 end %falsa_posicion(f, a, b, tol)
 
-% [xAprox, iter] = falsa_posicion('cos(x)-x', 1/2, pi, 10^-5)
-% [xAprox, iter] = falsa_posicion('exp(2*x) - 10 - log(x/2)', 1, 1.2, 10^-2)
+
+%{
+funcion1 = 'cos(x)-x';
+disp(funcion1);
+[x_aprox1, iter1] = falsa_posicion(funcion1, 1/2, pi, 10^-5)
+disp(x_aprox1);
+disp(iter1);
+
+funcion2 = 'exp(x) - x - 2'
+disp(funcion2);
+[x_aprox2, iter2] = falsa_posicion(funcion2, 0, 2, 10^-5)
+disp(x_aprox2);
+disp(iter2);
+%}

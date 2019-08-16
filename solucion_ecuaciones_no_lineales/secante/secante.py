@@ -2,7 +2,7 @@ from sympy import sympify
 
 """
 Funcion que implementa el metodo de la secante
-:param f: string con la funcion que se debe evaluar
+:param str_funcion: string con la funcion que se debe evaluar
 :param xk_anterior2: valor de xk de la iteracion inicial
 :param xk_anterior1: valor de xk de la segunda iteracion
 :param tol: tolerancia al fallo que debe cumplir el resultado
@@ -10,8 +10,8 @@ Funcion que implementa el metodo de la secante
 """
 
 
-def secante(f, xk_anterior2, xk_anterior1, tol):
-    funcion = sympify(f)  # Se obtiene la funcion ingresada por el usuario
+def secante(str_funcion, xk_anterior2, xk_anterior1, tol):
+    funcion = sympify(str_funcion)  # Se obtiene la funcion ingresada por el usuario
     itr = 0  # Se inicializa el contador del numero de iteraciones
 
     # While infinito que se rompe al cumplir la condicion de parada
@@ -35,5 +35,12 @@ def secante(f, xk_anterior2, xk_anterior1, tol):
     return [xk, itr]
 
 
-# funcion = 'exp(2*x) - 10 - log(x/2)'
-# print(secante(funcion, 1, 1.2, 10 ** -2));
+# funcion1 = 'exp(2*x) - 10 - log(x/2)'
+# print(funcion1)
+# print(secante(funcion1, 1, 1.2, 10 ** -2))
+# print()
+#
+# funcion2 = 'cos(2*x)^2 - x^2'
+# print(funcion2)
+# print(secante(funcion2, 2 / 4, 3 / 4, 10 ** -5))
+# print()

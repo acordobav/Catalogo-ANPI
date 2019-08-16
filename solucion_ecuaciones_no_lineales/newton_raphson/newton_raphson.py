@@ -3,15 +3,15 @@ from matplotlib import pyplot as plt
 
 """
 Metodo de Newton-Raphson para encontrar el cero de una funcion
-:param f: string con la funcion que se debe evaluar
+:param str_funcion: string con la funcion que se debe evaluar
 :param xk: valor de x inicial con el cual aplicar el metodo
 :param tol: tolerancia al fallo de debe tener el resultado final
 :returns: lista con dos elementos, xk calculado y numero iteraciones
 """
 
 
-def newton_raphson(f, xk, tol):
-    funcion = sympify(f)  # Se obtiene la funcion a partir del string
+def newton_raphson(str_funcion, xk, tol):
+    funcion = sympify(str_funcion)  # Se obtiene la funcion a partir del string
     df = Derivative(funcion, 'x')  # Se deriva la funcion
     itr = 0  # Se inicializa el contador de iteraciones
 
@@ -41,18 +41,24 @@ def newton_raphson(f, xk, tol):
 
 """
 Funcion para realizar la grafica del error en el metodo Newton-Raphson
-:param x: lista con todos los valores que deben graficarse en el eje x
-:param y: lista con todos los valores que deben graficarse en el eje y
+:param eje_x: lista con todos los valores que deben graficarse en el eje x
+:param eje_y: lista con todos los valores que deben graficarse en el eje y
 """
 
 
-def graficar_error(x, y):
-    plt.plot(x, y)  # Se asignan los valores a los ejes de coordenadas
+def graficar_error(eje_x, eje_y):
+    plt.plot(eje_x, eje_y)  # Se asignan los valores a los ejes de coordenadas
     plt.xlabel('Iteracion')  # Se le coloca un nombre al eje x
     plt.ylabel('| f(xk) |')  # Se le coloca un nombre al eje y
     plt.show()  # Se despliega el grafico
 
 
-# function1 = 'cos(2*x)^2 - x^2'
-# function2 = 'exp(x) - x^3 - x'
-# newton_raphson(function1, 3/4, 0.0001)
+# funcion1 = 'cos(2*x)^2 - x^2'
+# print(funcion1)
+# print(newton_raphson(funcion1, 3 / 4, 10 ** -5))
+# print()
+#
+# funcion2 = 'exp(x) - x^3 - x'
+# print(funcion2)
+# print(newton_raphson(funcion2, 3 / 4, 10 ** -5))
+# print()
