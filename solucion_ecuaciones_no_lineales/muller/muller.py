@@ -34,12 +34,16 @@ def muller(str_funcion, x0, x1, x2, tol):
         # Se calculan la solucion del sistema de ecuaciones
         matrix_x = np.linalg.solve(matrix_a, matrix_b)
 
+        a = matrix_x[0][0]
+        b = matrix_x[1][0]
+        c = matrix_x[2][0]
+
         # Se calcula el discriminante de la funcion cuadratica
-        discr = (matrix_x[1][0] ** 2) - 4 * matrix_x[0][0] * matrix_x[2][0]
+        discr = (b ** 2) - 4 * a * c
 
         # Se calculan los ceros de la funcion
-        cero1 = (-matrix_x[1][0] + discr ** (1 / 2)) / (2 * matrix_x[0][0])
-        cero2 = (-matrix_x[1][0] - discr ** (1 / 2)) / (2 * matrix_x[0][0])
+        cero1 = (-b + discr ** (1 / 2)) / (2 * a)
+        cero2 = (-b - discr ** (1 / 2)) / (2 * a)
 
         # Se calcula el promedio de los ceros a cada punto
         prom_cero1 = (abs(cero1 - x0) + abs(cero1 - x1) + abs(cero1 - x2)) / 3
@@ -68,10 +72,10 @@ def muller(str_funcion, x0, x1, x2, tol):
     return [x_aprox, itr]
 
 
-# funcion1 = 'sin(x) - x / 2'
-# print("funcion = ", funcion1)
-# print(muller(funcion1, 2, 2.2, 1.8, 10 ** -5))
+funcion1 = 'sin(x) - x / 2'
+print("funcion = ", funcion1)
+print(muller(funcion1, 2, 2.2, 1.8, 10 ** -5))
 
-# funcion2 = '(1 + x) * sin(x) - 1'
-# print("funcion = ", funcion2)
-# print(muller(funcion2, 2.9, 3, 2.8, 10 ** -5))
+funcion2 = '(1 + x) * sin(x) - 1'
+print("funcion = ", funcion2)
+print(muller(funcion2, 2.9, 3, 2.8, 10 ** -5))
