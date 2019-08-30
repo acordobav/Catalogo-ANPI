@@ -3,6 +3,8 @@ Este archivo contiene todas las dependencias que se necesitan para poder hacer u
 -=-=-=-=- Python -=-=-=-=-
     - Sympy
     - Matplotlib
+    - Scipy
+    - Numpy
 
 
 -=-=-=-=- Octave -=-=-=-=-
