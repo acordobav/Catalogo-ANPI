@@ -16,14 +16,12 @@ def punto_fijo(str_funcion, xk, a, b, tol):
     itr = 0                         # Contador de iteraciones
 
     # Se verifica la existencia del punto fijo
-    existencia = verificar_existencia(funcion, df, a, b)
-    if existencia != 0:
-        return existencia
+    if verificar_existencia(funcion, df, a, b) != 0:
+        return "No se cumple el criterio de existencia"
 
     # Se verifica la unicidad del punto fijo
-    unicidad = verificar_unicidad(df)
-    if unicidad != 0:
-        return unicidad
+    if verificar_unicidad(df) != 0:
+        return "No se cumple el criterio de unicidad"
 
     xk_ant = xk
 
@@ -48,7 +46,7 @@ def verificar_existencia(funcion, derivada, a, b):
     :param derivada: derivada de la funcion simbolica
     :param a: extremo inferior del intervalo
     :param b: extremo superior del intervalo
-    :return: 0 si existe, un string en caso de que no exista
+    :return: 0 si existe, un 1 en caso de que no exista
     """
     # Se obtienen los puntos criticos de la funcion
     puntos_criticos = solve(derivada)
@@ -61,7 +59,7 @@ def verificar_existencia(funcion, derivada, a, b):
 
         # Se verifica que este valor este dentro del intervalo [a, b]
         if not a < valor < b:
-            return "No se cumple el criterio de existencia"
+            return 1
 
     # Se evaluan los extremos en la funcion
     valor_a = float(funcion.subs({'x': a}))
@@ -69,7 +67,7 @@ def verificar_existencia(funcion, derivada, a, b):
 
     # Funcion en los extremos debe estar dentro del intervalo [a, b]
     if not a < valor_a < b or not a < valor_b < b:
-        "No se cumple el criterio de existencia"
+        1
 
     return 0
 
@@ -78,7 +76,7 @@ def verificar_unicidad(derivada):
     """
     Funcion para verificar la unicidad del punto fijo
     :param derivada: derivada de la funcion
-    :return: 0 si el punto es unico, un string en caso contrario
+    :return: 0 si el punto es unico, un 1 en caso contrario
     """
     # Se obtienen los puntos criticos de la funcion
     puntos_criticos = solve(derivada)
@@ -88,7 +86,7 @@ def verificar_unicidad(derivada):
     for i in range(0, n):
         # Se verifica que el punto critico este dentro de [-1, 1]
         if not -1 < puntos_criticos[i] < 1:
-            return "No se cumple el criterio de unicidad"
+            return 1
 
     return 0
 
@@ -96,7 +94,5 @@ def verificar_unicidad(derivada):
 # print(punto_fijo('(x ** 2 - 1) / 3', 0, -1, 1, 10 ** -5))
 
 # print(punto_fijo('1 / (1 + x ** 2)', 0, -3, 3, 10 ** -5))
-
-# print(punto_fijo('sin(x)', 0, -3, 3, 10 ** -5))
 
 # print(punto_fijo('log(2 * x + 1)', 0, 1, 2, 10 ** -5))
