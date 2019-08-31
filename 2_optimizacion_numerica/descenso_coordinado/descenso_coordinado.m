@@ -6,9 +6,14 @@ pkg load symbolic
 % :param variables: lista con las variables de la ecuacion
 % :param vector: vector inicial de necesita el metodo
 % :param tol: tolerancia al fallo que debe tener el resultado
+% :param iter_max: iteraciones maximas que no debe superar el metodo
 % :return: lista con dos elementos, vector calculado y numero de iteraciones
 
-function [v_aprox, iter] = descenso_coordinado(str_funcion, variables, vector, tol)
+function [v_aprox, iter] = descenso_coordinado(str_funcion, variables, vector, tol, iter_max)
+    if nargin == 4
+        iter_max = 200
+    end  % if nargin == 4
+
     itr = 0                 % Contador de iteraciones
     vector_ant = []         % Vector de la iteracion anterior
     lista_simb = []         % Lista con las variables simbolicas
@@ -21,7 +26,7 @@ function [v_aprox, iter] = descenso_coordinado(str_funcion, variables, vector, t
         lista_simb = [lista_simb, sym(variables(i))]
     end  % for i = 1:n
 
-    while 1
+    while itr <= iter_max
         % Se recorren cada una de las variables de la funcion
         for z = 1:n
             % Se hace una copia de la funcion original

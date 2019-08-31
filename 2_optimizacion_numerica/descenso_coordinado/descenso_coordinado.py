@@ -3,13 +3,14 @@ from scipy import optimize
 from numpy import linalg
 
 
-def descenso_coordinado(str_funcion, variables, vector, tol):
+def descenso_coordinado(str_funcion, variables, vector, tol, iter_max=200):
     """
     Funcion que implementa el metodo de descenso coordinado
     :param str_funcion: string con la funcion que se debe evaluar
     :param variables: lista con las variables de la ecuacion
     :param vector: vector inicial de necesita el metodo
     :param tol: tolerancia al fallo que debe tener el resultado
+    :param iter_max: iteraciones maximas que no debe superar el metodo
     :return: lista con dos elementos, vector calculado y numero de iteraciones
     """
     funcion = sympify(str_funcion)  # Se obtiene la funcion a partir del string
@@ -29,7 +30,7 @@ def descenso_coordinado(str_funcion, variables, vector, tol):
     # Se crea el vector anterior inicial
     vector_ant = [0] * n
 
-    while 1:
+    while itr <= iter_max:
         # Se recorren cada una de las variables de la funcion
         for z in range(0, n):
             funcion_k = funcion
