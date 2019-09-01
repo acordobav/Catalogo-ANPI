@@ -9,3 +9,5 @@ Este archivo contiene todas las dependencias que se necesitan para poder hacer u
 
 -=-=-=-=- Octave -=-=-=-=-
     - Symbolic
+    
+Al final del archivo de cada método se encuentran ejemplos de como ejecutar las funciones. 
