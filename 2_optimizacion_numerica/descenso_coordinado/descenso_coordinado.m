@@ -26,7 +26,7 @@ function [v_aprox, iter] = descenso_coordinado(str_funcion, variables, vector, t
         lista_simb = [lista_simb, sym(variables(i))]
     end  % for i = 1:n
 
-    while itr <= iter_max
+    while itr < iter_max
         % Se recorren cada una de las variables de la funcion
         for z = 1:n
             % Se hace una copia de la funcion original
