@@ -29,10 +29,10 @@ def factorizacion_lu(matriz_a, matriz_b):
     return matriz_x
 
 
-a = [[4, -2, 1], [20, -7, 12], [-8, 13, 17]]
-b = [[11], [70], [17]]
-print(factorizacion_lu(a, b))
-
-a1 = [[2, 3, 4], [4, 5, 10], [4, 8, 2]]
-b1 = [[6], [16], [2]]
-print(factorizacion_lu(a1, b1))
+# a = [[4, -2, 1], [20, -7, 12], [-8, 13, 17]]
+# b = [[11], [70], [17]]
+# print(factorizacion_lu(a, b))
+# 
+# a1 = [[2, 3, 4], [4, 5, 10], [4, 8, 2]]
+# b1 = [[6], [16], [2]]
+# print(factorizacion_lu(a1, b1))
