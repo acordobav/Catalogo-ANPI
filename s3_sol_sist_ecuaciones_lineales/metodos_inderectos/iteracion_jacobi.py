@@ -1,5 +1,5 @@
 from sympy import Symbol, solve
-from numpy import linalg, matrix
+from numpy import linalg
 
 
 def iteracion_jacobi(matriz_a, matriz_b, tol):
