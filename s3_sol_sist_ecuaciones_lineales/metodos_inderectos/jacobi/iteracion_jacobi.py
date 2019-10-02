@@ -6,7 +6,7 @@ def iteracion_jacobi(matriz_a, matriz_b, tol):
     """
     Funcion que implementa el metodo iterativo de Jacobi para resolver el
     sistema A x = b
-    :param matriz_a: Matriz cuadrada
+    :param matriz_a: Matriz cuadrada diagonalmente dominante
     :param matriz_b: Vector columna
     :param tol: Tolerancia al fallo que debe tener el vector resultado
     :return: Vector resultado
