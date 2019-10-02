@@ -4,7 +4,7 @@ from numpy import linalg
 
 def iteracion_gauss_seidel(matriz_a, matriz_b, tol):
     """
-    Funcion que implementa el metodo iterativo de Jacobi para resolver el
+    Funcion que implementa el metodo iterativo de Gauss-Seidel para resolver el
     sistema A x = b
     :param matriz_a: Matriz cuadrada diagonalmente dominante
     :param matriz_b: Vector columna

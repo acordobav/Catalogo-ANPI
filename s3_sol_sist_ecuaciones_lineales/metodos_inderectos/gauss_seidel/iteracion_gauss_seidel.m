@@ -2,7 +2,7 @@ pkg load symbolic
 
 
 function matriz_x = iteracion_gauss_seidel(matriz_a, matriz_b, tol)
-    % Funcion que implementa el metodo iterativo de Jacobi para resolver el
+    % Funcion que implementa el metodo iterativo de Gauss-Seidel para resolver el
     % sistema A x = b
     % :param matriz_a: Matriz cuadrada diagonalmente dominante
     % :param matriz_b: Vector columna
@@ -37,7 +37,7 @@ function matriz_x = iteracion_gauss_seidel(matriz_a, matriz_b, tol)
         end  % if norma_2 < tol
     end  % while 1
     matriz_x = vec_x;
-end  % iteracion_gauss_seidel(matriz_a, matriz_b, tol):
+end  % iteracion_gauss_seidel(matriz_a, matriz_b, tol)
 
 %A = [10 3 1; 2 -10 3; 0 -1 2];
 %b = [-5; 14; 14];
