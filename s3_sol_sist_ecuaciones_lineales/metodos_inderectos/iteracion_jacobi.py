@@ -30,7 +30,7 @@ def iteracion_jacobi(matriz_a, matriz_b, tol):
                     ecuacion -= matriz_a[i][j] * x
                 else:
                     # Se multiplica por el valor respectivo en el vector anterior
-                    ecuacion -= matriz_a[i][j] * vec_x_ant[i]
+                    ecuacion -= matriz_a[i][j] * vec_x_ant[j]
 
             # Se actualiza el vector con la solucion obtenida
             vec_x[i] = float(solve(ecuacion)[0])
