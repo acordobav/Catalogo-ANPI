@@ -31,7 +31,6 @@ def pseudoinversa_sbi(matriz_a, tol):
     :return: Matriz pseudoinversa aproximada
     """
     n = len(matriz_a)       # Numero de filas
-    m = len(matriz_a[0])    # Numero de columnas
     matriz_a = matrix(matriz_a)
 
     a_t = transpose(matriz_a)  # Matriz transpuesta de matriz_a
