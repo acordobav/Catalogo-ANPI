@@ -1,6 +1,6 @@
 from numpy import transpose, linalg, array
-from s3_sol_sist_ecuaciones_lineales.metodos_directos.sustitucion import sustitucion_adelante
-from s3_sol_sist_ecuaciones_lineales.metodos_directos.sustitucion import sustitucion_atras
+from s3_sol_sist_ecuaciones_lineales_directos.sustitucion import sustitucion_adelante
+from s3_sol_sist_ecuaciones_lineales_directos.sustitucion import sustitucion_atras
 
 
 def factorizacion_cholesky(matriz_a, matriz_b):
