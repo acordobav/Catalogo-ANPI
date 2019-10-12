@@ -6,7 +6,7 @@ def newton(lista_puntos):
     Diferencias Divididas de Newton para resolver un problema de interpolacion
     :param lista_puntos: Los puntos deben ser ingresados en una lista, donde cada punto
     es una lista, donde la primera posicion es el x, y la segunda posicion es el y. [x, y]
-    :return:
+    :return: Polinomio de interpolacion obtenido
     """
     n = len(lista_puntos)  # Cantidad de puntos
     polinomio = lista_puntos[0][1]  # Polinomio de interpolacion
