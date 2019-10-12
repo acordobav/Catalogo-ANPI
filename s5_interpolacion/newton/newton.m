@@ -6,7 +6,7 @@ function resultado = newton(lista_puntos)
     % :param lista_puntos: Los puntos deben ser ingresados en una lista, donde cada punto
     % es una lista, donde la primera posicion es el x, y la segunda posicion es el y. [x, y]
     % :return: Polinomio de interpolacion obtenido
-    % [n, m] = size(lista_puntos);  % Cantidad de puntos
+    [n, m] = size(lista_puntos);  % Cantidad de puntos
     if m ~= 2
         error('Error en la lista de puntos');
     end  % if m ~=
