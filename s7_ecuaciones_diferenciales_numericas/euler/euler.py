@@ -22,5 +22,5 @@ def euler(str_funcion, a, b, n, x, y):
     return y
 
 
-resultado = euler('y - x ** 2 + 1', 0, 2, 11, 0, 0.5)
-print(resultado)
+# resultado = euler('y - x ** 2 + 1', 0, 2, 11, 0, 0.5)
+# print(resultado)
